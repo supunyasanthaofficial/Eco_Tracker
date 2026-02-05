@@ -7,18 +7,32 @@ import {
   KeyboardAvoidingView,
   Platform,
   ScrollView,
+  Alert,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Eye, EyeOff, Leaf } from "lucide-react-native";
 import { styles } from "./Login.styles";
+import { useNavigation } from "@react-navigation/native";
 
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
+  const navigation = useNavigation<any>();
+
   const handleLogin = () => {
-    console.log("Login details:", { email, password });
+    // if (email.trim() === "" || password.trim() === "") {
+    //   Alert.alert("Error", "Please enter both email and password");
+    //   return;
+    // }
+
+    console.log("Login Successful! Navigating to Home...");
+
+    navigation.reset({
+      index: 0,
+      routes: [{ name: "Home" }],
+    });
   };
 
   return (
@@ -43,7 +57,7 @@ const LoginScreen = () => {
               <Text style={styles.label}>Email Address</Text>
               <TextInput
                 style={styles.input}
-                placeholder="example@mail.com"
+                placeholder="Supun@mail.com"
                 value={email}
                 onChangeText={setEmail}
                 keyboardType="email-address"
