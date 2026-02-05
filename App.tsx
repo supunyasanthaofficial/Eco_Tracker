@@ -5,6 +5,7 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import { StatusBar } from "expo-status-bar";
 
 import LoginScreen from "./src/screens/Auth/LoginScreen";
+import TabNavigator from "./src/navigation/TabNavigator";
 
 const Stack = createNativeStackNavigator();
 
@@ -17,9 +18,11 @@ export default function App() {
           initialRouteName="Login"
           screenOptions={{
             headerShown: false,
+            animation: "fade",
           }}
         >
           <Stack.Screen name="Login" component={LoginScreen} />
+          <Stack.Screen name="Home" component={TabNavigator} />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>
