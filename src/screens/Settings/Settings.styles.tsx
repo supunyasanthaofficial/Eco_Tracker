@@ -1,0 +1,96 @@
+import { StyleSheet } from "react-native";
+
+export const styles = StyleSheet.create({
+  container: { flex: 1, backgroundColor: "#F9FAFB" },
+  scrollContent: { padding: 20 },
+  headerTitle: {
+    fontSize: 28,
+    fontWeight: "bold",
+    color: "#111827",
+    marginBottom: 25,
+  },
+
+  profileCard: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#FFFFFF",
+    padding: 16,
+    borderRadius: 20,
+    marginBottom: 30,
+    borderWidth: 1,
+    borderColor: "#F3F4F6",
+  },
+  avatarLarge: {
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    backgroundColor: "#E5E7EB",
+  },
+  profileInfo: { flex: 1, marginLeft: 15 },
+  profileName: { fontSize: 18, fontWeight: "bold", color: "#111827" },
+  profileEmail: { fontSize: 14, color: "#6B7280" },
+  editBtn: {
+    backgroundColor: "#F3F4F6",
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 8,
+  },
+  editBtnText: { color: "#4B5563", fontWeight: "600", fontSize: 12 },
+
+  section: { marginBottom: 25 },
+  sectionHeader: {
+    fontSize: 14,
+    fontWeight: "600",
+    color: "#9CA3AF",
+    textTransform: "uppercase",
+    letterSpacing: 1,
+    marginBottom: 10,
+    marginLeft: 4,
+  },
+
+  settingItem: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    backgroundColor: "#FFFFFF",
+    padding: 16,
+    borderRadius: 16,
+    marginBottom: 8,
+  },
+  itemLeft: { flexDirection: "row", alignItems: "center" },
+  iconWrapper: {
+    width: 36,
+    height: 36,
+    borderRadius: 10,
+    backgroundColor: "#F9FAFB",
+    justifyContent: "center",
+    alignItems: "center",
+    marginRight: 12,
+  },
+  itemTitle: { fontSize: 16, color: "#374151", fontWeight: "500" },
+  itemRight: { flexDirection: "row", alignItems: "center" },
+  itemValue: { fontSize: 14, color: "#9CA3AF", marginRight: 8 },
+
+  logoutButton: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: 16,
+    marginTop: 10,
+    borderRadius: 16,
+    backgroundColor: "#FEF2F2",
+  },
+  logoutText: {
+    color: "#EF4444",
+    fontWeight: "bold",
+    fontSize: 16,
+    marginLeft: 8,
+  },
+  versionText: {
+    textAlign: "center",
+    color: "#9CA3AF",
+    fontSize: 12,
+    marginTop: 25,
+    marginBottom: 10,
+  },
+});
