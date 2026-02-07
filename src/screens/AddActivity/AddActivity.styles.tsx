@@ -1,0 +1,41 @@
+import { StyleSheet } from "react-native";
+
+export const styles = StyleSheet.create({
+  container: { flex: 1, backgroundColor: "#F9FAFB" },
+  scrollContent: { padding: 20 },
+  title: { fontSize: 24, fontWeight: "bold", color: "#111827" },
+  subtitle: { fontSize: 14, color: "#6B7280", marginTop: 4, marginBottom: 30 },
+  categoryRow: { flexDirection: "row", gap: 12, marginBottom: 30 },
+  categoryBox: {
+    flex: 1,
+    backgroundColor: "#FFFFFF",
+    padding: 16,
+    borderRadius: 20,
+    alignItems: "center",
+    borderWidth: 1,
+    borderColor: "#E5E7EB",
+  },
+  selectedBox: { backgroundColor: "#22C55E", borderColor: "#22C55E" },
+  categoryText: { marginTop: 8, fontSize: 12, fontWeight: "600", color: "#6B7280" },
+  selectedText: { color: "#FFFFFF" },
+  inputContainer: { marginBottom: 30 },
+  inputLabel: { fontSize: 16, fontWeight: "600", color: "#374151", marginBottom: 10 },
+  input: {
+    backgroundColor: "#FFFFFF",
+    padding: 16,
+    borderRadius: 16,
+    fontSize: 18,
+    borderWidth: 1,
+    borderColor: "#E5E7EB",
+  },
+  saveButton: {
+    backgroundColor: "#22C55E",
+    padding: 18,
+    borderRadius: 16,
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: 8,
+  },
+  saveButtonText: { color: "#FFFFFF", fontSize: 16, fontWeight: "bold" },
+});
