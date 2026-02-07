@@ -8,31 +8,50 @@ import {
   Platform,
   ScrollView,
   Alert,
+  ActivityIndicator,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Eye, EyeOff, Leaf } from "lucide-react-native";
 import { styles } from "./Login.styles";
 import { useNavigation } from "@react-navigation/native";
 
+import { login, signUp } from "../../services/authService";
+
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSignUp, setIsSignUp] = useState(false);
   const navigation = useNavigation<any>();
 
-  const handleLogin = () => {
-    // if (email.trim() === "" || password.trim() === "") {
-    //   Alert.alert("Error", "Please enter both email and password");
-    //   return;
-    // }
+  const handleAuth = async () => {
+    if (email.trim() === "" || password.trim() === "") {
+      Alert.alert("Error", "Please fill in all fields");
+      return;
+    }
 
-    console.log("Login Successful! Navigating to Home...");
+    setIsLoading(true);
+    let result;
 
-    navigation.reset({
-      index: 0,
-      routes: [{ name: "Home" }],
-    });
+    if (isSignUp) {
+      result = await signUp(email, password);
+    } else {
+      result = await login(email, password);
+    }
+
+    setIsLoading(false);
+
+    if (result.success) {
+      console.log(`${isSignUp ? "Signup" : "Login"} Successful!`);
+
+      navigation.reset({
+        index: 0,
+        routes: [{ name: "Home" }],
+      });
+    } else {
+      Alert.alert("Authentication Failed", result.error);
+    }
   };
 
   return (
@@ -48,7 +67,9 @@ const LoginScreen = () => {
             </View>
             <Text style={styles.title}>Eco Tracker</Text>
             <Text style={styles.subtitle}>
-              Track your carbon footprint & save the planet.
+              {isSignUp
+                ? "Join us to save the planet!"
+                : "Track your carbon footprint & save the planet."}
             </Text>
           </View>
 
@@ -88,19 +109,35 @@ const LoginScreen = () => {
               </View>
             </View>
 
-            <TouchableOpacity style={styles.forgotPassword}>
-              <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
-            </TouchableOpacity>
+            {!isSignUp && (
+              <TouchableOpacity style={styles.forgotPassword}>
+                <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
+              </TouchableOpacity>
+            )}
 
-            <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
-              <Text style={styles.loginButtonText}>Login</Text>
+            <TouchableOpacity
+              style={[styles.loginButton, isLoading && { opacity: 0.7 }]}
+              onPress={handleAuth}
+              disabled={isLoading}
+            >
+              {isLoading ? (
+                <ActivityIndicator color="#FFF" />
+              ) : (
+                <Text style={styles.loginButtonText}>
+                  {isSignUp ? "Create Account" : "Login"}
+                </Text>
+              )}
             </TouchableOpacity>
           </View>
 
           <View style={styles.footer}>
-            <Text style={styles.footerText}>New here? </Text>
-            <TouchableOpacity>
-              <Text style={styles.signUpText}>Create Account</Text>
+            <Text style={styles.footerText}>
+              {isSignUp ? "Already have an account? " : "New here? "}
+            </Text>
+            <TouchableOpacity onPress={() => setIsSignUp(!isSignUp)}>
+              <Text style={styles.signUpText}>
+                {isSignUp ? "Login" : "Create Account"}
+              </Text>
             </TouchableOpacity>
           </View>
         </ScrollView>
