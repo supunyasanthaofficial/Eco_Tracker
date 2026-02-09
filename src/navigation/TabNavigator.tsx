@@ -7,12 +7,14 @@ import {
   LayoutDashboard,
   Settings,
   PlusCircle,
+  CheckSquare, // 👈 Tasks වෙනුවට අපි CheckSquare පාවිච්චි කරමු
 } from "lucide-react-native";
 
 import HomeScreen from "../screens/Home/HomeScreen";
 import DashboardScreen from "../screens/Dashboard/DashboardScreen";
 import SettingsScreen from "../screens/Settings/SettingsScreen";
 import AddActivityScreen from "../screens/AddActivity/AddActivityScreen";
+import TaskScreen from "../screens/Tasks/TasksScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -58,6 +60,18 @@ const TabNavigator = () => {
           tabBarLabel: "Add",
           tabBarIcon: ({ color, size }) => (
             <PlusCircle size={size + 4} color={color} />
+          ),
+        }}
+      />
+
+      {/* 🛠️ මෙතන නම "Tasks" කියලා වෙනස් කළා HomeScreen එකේ navigation එකට ගැලපෙන්න */}
+      <Tab.Screen
+        name="Tasks" 
+        component={TaskScreen}
+        options={{
+          tabBarLabel: "Tasks",
+          tabBarIcon: ({ color, size }) => (
+            <CheckSquare size={size} color={color} /> // 👈 නිවැරදි Icon එක
           ),
         }}
       />
