@@ -26,6 +26,12 @@ export const styles = StyleSheet.create({
     overflow: "hidden",
     marginBottom: 20,
   },
+
+  cardInfo: {
+    flex: 1,
+    justifyContent: 'center'
+  },
+
   cardLabel: { color: "#DCFCE7", fontSize: 16, fontWeight: "500" },
   cardValue: {
     color: "#FFFFFF",
@@ -77,4 +83,41 @@ export const styles = StyleSheet.create({
   activityName: { fontSize: 15, fontWeight: "600", color: "#111827" },
   activityTime: { fontSize: 12, color: "#9CA3AF" },
   activityImpact: { fontSize: 14, fontWeight: "bold", color: "#16A34A" },
+
+  loadingContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#F8FAFC",
+  },
+  tipBox: {
+    backgroundColor: "#FFF",
+    padding: 16,
+    borderRadius: 16,
+    flexDirection: "row",
+    alignItems: "center",
+    elevation: 2,
+    marginBottom: 15,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+  },
+  tipIconContainer: {
+    backgroundColor: "#FEF9C3",
+    padding: 10,
+    borderRadius: 12,
+    marginRight: 15,
+  },
+  tipTitle: {
+    fontSize: 14,
+    fontWeight: "bold",
+    color: "#1F2937",
+  },
+  tipDescription: {
+    fontSize: 13,
+    color: "#4B5563",
+    marginTop: 2,
+    lineHeight: 18,
+  },
 });
