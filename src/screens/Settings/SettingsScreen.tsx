@@ -22,7 +22,6 @@ const SettingsScreen = () => {
 
   const handleLogout = () => {
     setUser(null);
-
     navigation.reset({
       index: 0,
       routes: [{ name: "Login" }],
@@ -35,11 +34,13 @@ const SettingsScreen = () => {
     value,
     isSwitch,
     onValueChange,
+    onPress,
     showChevron = true,
   }: any) => (
     <TouchableOpacity
       style={styles.settingItem}
       disabled={isSwitch}
+      onPress={onPress}
       activeOpacity={0.7}
     >
       <View style={styles.itemLeft}>
@@ -113,8 +114,17 @@ const SettingsScreen = () => {
 
         <View style={styles.section}>
           <Text style={styles.sectionHeader}>Support & Legal</Text>
-          <SettingItem icon={Shield} title="Privacy Policy" />
-          <SettingItem icon={HelpCircle} title="Help Center" />
+          <SettingItem
+            icon={Shield}
+            title="Privacy Policy"
+            onPress={() => navigation.navigate("PrivacyPolicy")}
+          />
+
+          <SettingItem
+            icon={HelpCircle}
+            title="Help Center"
+            onPress={() => navigation.navigate("HelpCenter")}
+          />
         </View>
 
         <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
